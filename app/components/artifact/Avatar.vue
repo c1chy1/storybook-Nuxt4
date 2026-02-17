@@ -6,7 +6,7 @@
     <div
         :aria-description="title"
         :aria-label="title"
-        :class="{ 'bg-pz-additional-grey': type === EAvatars.INITIALS }"
+        :class="{ 'bgadditional-grey': type === EAvatars.INITIALS }"
         :style="avatar?.customStyle"
         class="h-7 w-7 rounded-border-radius-full shrink-0 flex items-center justify-center overflow-hidden"
     >
