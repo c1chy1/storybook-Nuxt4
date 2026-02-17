@@ -2,7 +2,7 @@ import type {EPositions} from '../../enums'
 
 /**
  * @interface IPropsChip
- * @description Properties for the PzChip component
+ * @description Properties for the Chip component
  * @props `backgroundColor` - Background color of the chip
  * @props `color` - Text color of the chip
  * @props `customStyles` - Custom styles for the chip
