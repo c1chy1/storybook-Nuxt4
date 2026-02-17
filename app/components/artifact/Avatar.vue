@@ -1,16 +1,16 @@
 <template>
   <div
       aria-label="Avatar"
-      class="pzui-flex pzui-items-center pzui-justify-start pzui-gap-3 pzui-select-none"
+      class="flex items-center justify-start gap-3 select-none"
   >
     <div
         :aria-description="title"
         :aria-label="title"
-        :class="{ 'pzui-bg-pz-additional-grey': type === EAvatars.INITIALS }"
+        :class="{ 'bg-pz-additional-grey': type === EAvatars.INITIALS }"
         :style="avatar?.customStyle"
-        class="pzui-h-7 pzui-w-7 pzui-rounded-pz-border-radius-full pzui-shrink-0 pzui-flex pzui-items-center pzui-justify-center pzui-overflow-hidden"
+        class="h-7 w-7 rounded-border-radius-full shrink-0 flex items-center justify-center overflow-hidden"
     >
-      <!--      <PzImage
+      <Image
                 v-if="type === EAvatars.AVATAR && avatar?.source"
                 :id="avatar?.id"
                 :blob="avatar?.blob"
@@ -22,15 +22,15 @@
                 :open-in-new-tab="false"
                 :source="avatar?.source"
                 :type="avatar?.type"
-            />-->
+      />
       <span
-          class="pzui-font-normal pzui-text-pz-additional-white pzui-leading-none pzui-mt-[2px]"
+          class="font-normal text-additional-white leading-none mt-[2px]"
           style="font-size: 0.8rem"
       >
         {{ initials }}
       </span>
     </div>
-    <span class="pzui-hidden md:!pzui-block">
+    <span class="hidden md:!block">
       {{ title }}
     </span>
   </div>

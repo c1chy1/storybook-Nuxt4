@@ -1,1 +1,3 @@
-export {default as Avatar} from './artifact/Avatar.vue'
+import '../tailwind.css'
+
+export * from './artifact'

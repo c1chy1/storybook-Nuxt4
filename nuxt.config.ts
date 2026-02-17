@@ -2,5 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/image', '@nuxtjs/storybook']
+  modules: ['@nuxt/image', '@nuxtjs/storybook'],
+    components: [
+      {
+        path: '~/app/components',
+        pathPrefix: false,
+      },
+    ],
 })
