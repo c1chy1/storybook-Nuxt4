@@ -1,4 +1,5 @@
-import {setup} from '@storybook/vue3'
+import '../app/assets/css/tailwind.css'
+import {setup} from '@storybook/vue3-vite'
 
 setup((app) => {
     // Nuxt-only components used in app.vue
