@@ -1,16 +1,10 @@
 import type {Meta, StoryFn} from '@storybook/vue3-vite'
 import type {IPropsImage} from '../../../types/src'
 import {EFittings, EMedia} from '../../../types/src'
-import {fn} from '@storybook/test'
 import {Image} from '../../components/prose'
 
 const meta: Meta<typeof Image> = {
     argTypes: {
-        onClick: {
-            action: 'click:image',
-            table: {category: 'Events'},
-            description: 'Triggered when the image emits click:image',
-        },
         alt: {
             control: {
                 type: 'text',
@@ -217,14 +211,13 @@ const meta: Meta<typeof Image> = {
         height: '200',
         id: 'image',
         label: 'Label',
-        source:
-            '/public/images/storybook/example.jpg',
+        source: '/images/storybook/example.jpg',
         type: EMedia.IMAGE,
         width: '200',
-        onClick: fn()
     },
     component: Image,
     parameters: {
+        actions: {handles: ['click:image']},
         docs: {
             description: {
                 component:
@@ -242,7 +235,6 @@ const Default: StoryFn<typeof Image> = (args) => ({
     methods: {
         onClick(image: IPropsImage) {
             console.debug('Storybook: @click:image - Image clicked', image)
-            args.onClick(image)
         },
     },
     setup() {
@@ -300,6 +292,7 @@ OpenInNewTab.parameters = {
     },
 }
 OpenInNewTab.args = {
+    fullscreen: false,
     openInNewTab: true,
 }
 
