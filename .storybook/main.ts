@@ -2,7 +2,6 @@ import type {StorybookConfig} from '@storybook/vue3-vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 
-
 const config: StorybookConfig = {
     framework: {
         name: '@storybook/vue3-vite',
@@ -16,7 +15,17 @@ const config: StorybookConfig = {
     ],
     addons: [],
     async viteFinal(config) {
-        config.plugins = [...(config.plugins || []), tailwindcss(), vue()]
+        config.plugins = [
+            ...(config.plugins || []),
+            tailwindcss(),
+            vue({
+                template: {
+                    compilerOptions: {
+                        isCustomElement: (tag) => tag === 'iconify-icon',
+                    },
+                },
+            }),
+        ]
         return config
     },
 }
