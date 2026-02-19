@@ -1,6 +1,6 @@
 import type {Meta, StoryFn} from '@storybook/vue3-vite'
-import Avatar from "../../components/artifact/Avatar.vue"
 import {EAvatars, EFittings} from '../../../types/src'
+import {Avatar} from '../../components/artifact'
 
 const meta: Meta<typeof Avatar> = {
     argTypes: {
