@@ -58,13 +58,22 @@
 <script lang="ts" setup>
 import type {IPropsImage} from '../../../types/src'
 import {EFittings} from '../../../types/src'
-/*import { getDocument, getWindow } from '../../../types/src'*/
 import {ref, watch} from 'vue'
 import Icon from '../artifact/Icon.vue'
 
 defineOptions({
   inheritAttrs: false,
 })
+
+
+function getWindow(): Window | undefined {
+  return typeof window !== 'undefined' ? window : undefined
+}
+
+function getDocument(): Document | undefined {
+  return typeof document !== 'undefined' ? document : undefined
+}
+
 
 /* Props ----------- */
 const props = withDefaults(defineProps<IPropsImage>(), {})
