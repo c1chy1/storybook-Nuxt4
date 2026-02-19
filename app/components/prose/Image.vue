@@ -59,7 +59,7 @@
 import type {IPropsImage} from '../../../types/src'
 import {EFittings} from '../../../types/src'
 import {ref, watch} from 'vue'
-import Icon from '../artifact/Icon.vue'
+import {Icon} from '../artifact'
 
 defineOptions({
   inheritAttrs: false,

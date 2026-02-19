@@ -40,7 +40,7 @@
 <script lang="ts" setup>
 import type {IPropsAvatar} from '../../../types/src'
 import {EAvatars} from '../../../types/src'
-import Image from '../prose/Image.vue'
+import {Image} from '../prose'
 
 /* Props ----------- */
 withDefaults(defineProps<IPropsAvatar>(), {
