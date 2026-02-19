@@ -47,7 +47,6 @@ withDefaults(defineProps<IPropsAvatar>(), {
   type: EAvatars.INITIALS,
 })
 
-console.log(EAvatars.AVATAR)
 
 /* Locals ---------- */
 /* Reactives ------- */
