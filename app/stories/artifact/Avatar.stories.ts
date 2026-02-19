@@ -1,4 +1,4 @@
-import type {Meta, StoryFn} from '@storybook/vue3'
+import type {Meta, StoryFn} from '@storybook/vue3-vite'
 import Avatar from "../../components/artifact/Avatar.vue"
 import {EAvatars, EFittings} from '../../../types/src'
 
@@ -65,7 +65,7 @@ const meta: Meta<typeof Avatar> = {
     args: {
         avatar: {
             fit: EFittings.COVER,
-            source: '',
+            source: '/images/storybook/example.jpg',
         },
         initials: 'MM',
         title: 'Max Mustermann',

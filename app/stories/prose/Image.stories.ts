@@ -1,4 +1,4 @@
-import type {Meta, StoryFn} from '@storybook/vue3'
+import type {Meta, StoryFn} from '@storybook/vue3-vite'
 import type {IPropsImage} from '../../../types/src'
 import {EFittings, EMedia} from '../../../types/src'
 import {fn} from '@storybook/test'
@@ -218,7 +218,7 @@ const meta: Meta<typeof Image> = {
         id: 'image',
         label: 'Label',
         source:
-            '',
+            '/public/images/storybook/example.jpg',
         type: EMedia.IMAGE,
         width: '200',
         onClick: fn()
