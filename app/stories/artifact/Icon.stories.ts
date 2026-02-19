@@ -1,4 +1,4 @@
-import type {Meta, StoryFn} from '@storybook/vue3'
+import type {Meta, StoryFn} from '@storybook/vue3-vite'
 import {Icon} from '../../components/artifact'
 
 const meta: Meta<typeof Icon> = {
