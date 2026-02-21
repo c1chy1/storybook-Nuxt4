@@ -1,5 +1,5 @@
 import type {Meta, StoryFn} from '@storybook/vue3-vite'
-/*import { action } from '@storybook/addon-actions'*/
+import {fn} from '@storybook/test'
 import {CloseButton} from '../../components/artifact'
 import {EColors} from '../../../types/src'
 
@@ -9,48 +9,32 @@ const meta: Meta<typeof CloseButton> = {
     },
     argTypes: {
         disabled: {
-            control: {
-                type: 'boolean',
-            },
+            control: {type: 'boolean'},
             description: 'Defines whether the button should be disabled',
             table: {
-                defaultValue: {
-                    summary: 'undefined',
-                },
-                type: {
-                    summary: 'boolean | undefined',
-                },
+                defaultValue: {summary: 'undefined'},
+                type: {summary: 'boolean | undefined'},
             },
         },
         onClick: {
             description: 'Function to call when the button is clicked',
             table: {
-                defaultValue: {
-                    summary: 'undefined',
-                },
-                type: {
-                    summary: 'function | undefined',
-                },
+                defaultValue: {summary: 'undefined'},
+                type: {summary: 'function | undefined'},
             },
         },
         theme: {
-            control: {
-                type: 'select',
-            },
+            control: {type: 'select'},
             description: 'Sets the theme of the close button',
             options: Object.values(EColors),
             table: {
-                defaultValue: {
-                    summary: 'EColors.DARK',
-                },
-                type: {
-                    summary: 'EColors | undefined',
-                },
+                defaultValue: {summary: 'EColors.DARK'},
+                type: {summary: 'EColors | undefined'},
             },
         },
     },
     args: {
-        onClick: () => console.debug('Storybook: close button clicked via props'),
+        onClick: fn(),
         theme: EColors.DARK,
     },
     component: CloseButton,
@@ -70,28 +54,23 @@ const Default: StoryFn<typeof CloseButton> = args => ({
         CloseButton,
     },
     setup() {
+        const onDismiss = fn<() => void>()
+
         return {
             args,
+            onDismiss,
         }
-    },
-    methods: {
-        onClick() {
-            console.debug('Storybook: @click:dismiss - close button clicked')
-
-        },
     },
     template: `
       <CloseButton
           v-bind="args"
-          @click:dismiss="onClick"
+          @click:dismiss="onDismiss"
       />
     `,
 })
 Default.parameters = {
     docs: {
-        canvas: {
-            sourceState: 'hidden',
-        },
+        canvas: {sourceState: 'hidden'},
         description: {
             story: 'This is the default view of the close button component.',
         },
@@ -103,21 +82,18 @@ const Light: StoryFn<typeof CloseButton> = args => ({
         CloseButton,
     },
     setup() {
+        const onDismiss = fn<() => void>()
+
         return {
             args,
+            onDismiss,
         }
-    },
-    methods: {
-        onClick() {
-            console.debug('Storybook: @click:dismiss - close button clicked')
-
-        },
     },
     template: `
       <div class="pzui-bg-pz-additional-black pzui-rounded-lg">
         <CloseButton
             v-bind="args"
-            @click:dismiss="onClick"
+            @click:dismiss="onDismiss"
         />
       </div>
     `,
@@ -127,9 +103,7 @@ Light.args = {
 }
 Light.parameters = {
     docs: {
-        canvas: {
-            sourceState: 'shown',
-        },
+        canvas: {sourceState: 'shown'},
         description: {
             story: 'This is the light version of the close button component.',
         },
@@ -147,6 +121,7 @@ The following events will be emitted from the component:
 ### Further Information
 - \`none\`
 `
+
 const Information: StoryFn = () => ({})
 Information.decorators = [
     () => ({
@@ -165,9 +140,7 @@ Information.decorators = [
 ]
 Information.parameters = {
     docs: {
-        canvas: {
-            sourceState: 'hidden',
-        },
+        canvas: {sourceState: 'hidden'},
         description: {
             story: information,
         },
