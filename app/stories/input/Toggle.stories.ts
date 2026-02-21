@@ -130,7 +130,7 @@ const meta: Meta<typeof Toggle> = {
         docs: {
             description: {
                 component:
-                    'The `pz-toggle` component is a toggle input that can be used to switch between two states.',
+                    'The `toggle` component is a toggle input that can be used to switch between two states.',
             },
         },
     },
