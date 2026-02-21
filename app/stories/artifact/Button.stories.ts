@@ -108,7 +108,7 @@ const meta: Meta<typeof Button> = {
     parameters: {
         docs: {
             description: {
-                component: 'The `<PzButton>` component is used to trigger an action when clicked.',
+                component: 'The `<Button>` component is used to trigger an action when clicked.',
             },
         },
     },
