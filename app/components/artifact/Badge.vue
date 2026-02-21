@@ -22,7 +22,7 @@
           v-bind="icon"
           @click="handleIconClick"
       />
-      <span class="select-none pt-[1px]">
+      <span class="select-none">
         {{ label }}
       </span>
     </span>

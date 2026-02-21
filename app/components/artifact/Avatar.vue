@@ -25,7 +25,7 @@
       />
       <span
           v-else-if="type === EAvatars.INITIALS"
-          class="font-normal text-additional-white leading-none mt-[2px]"
+          class="font-normal text-additional-white leading-none"
           style="font-size: 0.8rem"
       >
         {{ initials }}
