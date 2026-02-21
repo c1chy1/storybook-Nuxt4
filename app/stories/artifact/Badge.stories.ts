@@ -1,101 +1,63 @@
 import type {Meta, StoryFn} from '@storybook/vue3-vite'
+import {fn} from '@storybook/test'
 import type {IMedia, IPropsBadge, IPropsCloseButton} from '../../../types/src'
 import {EColors, EPositions, ESizes} from '../../../types/src'
-/*import { action } from '@storybook/addon-actions'*/
 import {Badge} from '../../components/artifact'
 
 const meta: Meta<typeof Badge> = {
     argTypes: {
         closeButton: {
-            control: {
-                type: 'object',
-            },
+            control: {type: 'object'},
             description: 'Sets the close button of the badge',
             table: {
-                defaultValue: {
-                    summary: 'undefined',
-                },
-                type: {
-                    summary: 'IPropsCloseButton | undefined',
-                },
+                defaultValue: {summary: 'undefined'},
+                type: {summary: 'IPropsCloseButton | undefined'},
             },
         },
         icon: {
-            control: {
-                type: 'object',
-            },
+            control: {type: 'object'},
             description: 'Sets the icon of the badge',
             table: {
-                defaultValue: {
-                    summary: 'undefined',
-                },
-                type: {
-                    summary: 'IMedia | undefined',
-                },
+                defaultValue: {summary: 'undefined'},
+                type: {summary: 'IMedia | undefined'},
             },
         },
         iconPosition: {
-            control: {
-                type: 'select',
-            },
+            control: {type: 'select'},
             description: 'Sets the position of the icon',
             options: [EPositions.LEFT, EPositions.RIGHT],
             table: {
-                defaultValue: {
-                    summary: 'undefined',
-                },
-                type: {
-                    summary: 'EPositions | undefined',
-                },
+                defaultValue: {summary: 'undefined'},
+                type: {summary: 'EPositions | undefined'},
             },
         },
         label: {
-            control: {
-                type: 'text',
-            },
+            control: {type: 'text'},
             description: 'Sets the label of the badge',
             table: {
-                defaultValue: {
-                    summary: 'undefined',
-                },
-                type: {
-                    summary: 'string | undefined',
-                },
+                defaultValue: {summary: 'undefined'},
+                type: {summary: 'string | undefined'},
             },
         },
         pill: {
-            control: {
-                type: 'boolean',
-            },
+            control: {type: 'boolean'},
             description: 'Defines whether the badge should be pill-shaped',
             table: {
-                defaultValue: {
-                    summary: 'undefined',
-                },
-                type: {
-                    summary: 'boolean | undefined',
-                },
+                defaultValue: {summary: 'undefined'},
+                type: {summary: 'boolean | undefined'},
             },
         },
         size: {
-            control: {
-                type: 'select',
-            },
+            control: {type: 'select'},
             description: 'Sets the size of the badge',
             options: [ESizes.SMALL, ESizes.DEFAULT, ESizes.BIG],
             table: {
-                defaultValue: {
-                    summary: 'ESizes.DEFAULT',
-                },
-                type: {
-                    summary: 'ESizes | undefined',
-                },
+                defaultValue: {summary: 'ESizes.DEFAULT'},
+                type: {summary: 'ESizes | undefined'},
             },
         },
         type: {
-            control: {
-                type: 'select',
-            },
+            control: {type: 'select'},
             description: 'Sets the type of the badge',
             options: [
                 EColors.PRIMARY,
@@ -108,12 +70,8 @@ const meta: Meta<typeof Badge> = {
                 EColors.DARK,
             ],
             table: {
-                defaultValue: {
-                    summary: 'EColors.PRIMARY',
-                },
-                type: {
-                    summary: 'EColors | undefined',
-                },
+                defaultValue: {summary: 'EColors.PRIMARY'},
+                type: {summary: 'EColors | undefined'},
             },
         },
     },
@@ -133,25 +91,20 @@ const meta: Meta<typeof Badge> = {
     title: 'components/Artifact/Badge',
 } as Meta<typeof Badge>
 
-const Default: StoryFn<typeof Badge> = (args: any) => ({
-    components: {
-        Badge,
-    },
+const Default: StoryFn<typeof Badge> = args => ({
+    components: {Badge},
     setup() {
+        // Storybook 10 way: spies instead of deprecated addon-actions `action()`
+        const onClick = fn<(badge: IPropsBadge) => void>()
+        const onIconClick = fn<(icon?: IMedia) => void>()
+        const onClose = fn<(closeButton?: IPropsCloseButton) => void>()
+
         return {
             args,
+            onClick,
+            onIconClick,
+            onClose,
         }
-    },
-    methods: {
-        onClick(badge: IPropsBadge) {
-            console.debug('Storybook: @click - badge clicked', badge)
-        },
-        onIconClick(icon?: IMedia) {
-            console.debug('Storybook: @click:icon - icon clicked', icon)
-        },
-        onClose(closeButton?: IPropsCloseButton) {
-            console.debug('Storybook: @close - close button clicked', closeButton)
-        },
     },
     template: `
       <Badge
@@ -164,9 +117,7 @@ const Default: StoryFn<typeof Badge> = (args: any) => ({
 })
 Default.parameters = {
     docs: {
-        canvas: {
-            sourceState: 'hidden',
-        },
+        canvas: {sourceState: 'hidden'},
         description: {
             story: 'This is the default view of the badge component.',
         },
@@ -179,9 +130,7 @@ Default.args = {
 const Pill = Default.bind({})
 Pill.parameters = {
     docs: {
-        canvas: {
-            sourceState: 'hidden',
-        },
+        canvas: {sourceState: 'hidden'},
         description: {
             story:
                 'The badge component has a pill-shaped version, in which the badge is displayed in a rounded shape.',
@@ -196,9 +145,7 @@ Pill.args = {
 const Icon = Default.bind({})
 Icon.parameters = {
     docs: {
-        canvas: {
-            sourceState: 'hidden',
-        },
+        canvas: {sourceState: 'hidden'},
         description: {
             story:
                 'The badge component has an icon version, in which the badge is displayed with an icon.',
@@ -207,18 +154,14 @@ Icon.parameters = {
 }
 Icon.args = {
     ...Default.args,
-    icon: {
-        title: 'material-symbols:label',
-    },
+    icon: {title: 'material-symbols:label'},
     label: 'Badge',
 }
 
 const CloseButton = Default.bind({})
 CloseButton.parameters = {
     docs: {
-        canvas: {
-            sourceState: 'hidden',
-        },
+        canvas: {sourceState: 'hidden'},
         description: {
             story:
                 'The badge component has a close button version, in which the badge is displayed with a close button.',
@@ -236,12 +179,9 @@ CloseButton.args = {
 const Styled = Default.bind({})
 Styled.parameters = {
     docs: {
-        canvas: {
-            sourceState: 'hidden',
-        },
+        canvas: {sourceState: 'hidden'},
         description: {
-            story:
-                'The badge component can be styled with different colors and sizes.',
+            story: 'The badge component can be styled with different colors and sizes.',
         },
     },
 }
@@ -264,6 +204,7 @@ The following events will be emitted from the component:
 ### Further Information
 - The color of the badge can be set with the \`type\` property
 `
+
 const Information: StoryFn = () => ({})
 Information.decorators = [
     () => ({
@@ -282,12 +223,8 @@ Information.decorators = [
 ]
 Information.parameters = {
     docs: {
-        canvas: {
-            sourceState: 'hidden',
-        },
-        description: {
-            story: information,
-        },
+        canvas: {sourceState: 'hidden'},
+        description: {story: information},
     },
 }
 
