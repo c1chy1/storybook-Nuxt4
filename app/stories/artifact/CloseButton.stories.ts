@@ -42,7 +42,7 @@ const meta: Meta<typeof CloseButton> = {
         docs: {
             description: {
                 component:
-                    'The `<PzCloseButton>` component is used to display a close button. It can be used to close a modal or dismiss a notification.',
+                    'The `<CloseButton>` component is used to display a close button. It can be used to close a modal or dismiss a notification.',
             },
         },
     },
@@ -90,7 +90,7 @@ const Light: StoryFn<typeof CloseButton> = args => ({
         }
     },
     template: `
-      <div class="pzui-bg-pz-additional-black pzui-rounded-lg">
+      <div class="bg-additional-black rounded-lg">
         <CloseButton
             v-bind="args"
             @click:dismiss="onDismiss"
