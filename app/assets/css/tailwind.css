@@ -139,3 +139,106 @@
 .tooltip .tooltip__content.tooltip--warning.tooltip--left::after {
     border-left-color: #f59e0b;
 }
+
+/**
+ * Component: PzChip
+ */
+.chip .chip-wrapper {
+    position: relative;
+}
+
+.chip .chip__content {
+    position: absolute;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 30;
+    pointer-events: none;
+}
+
+.chip .chip__text {
+    max-width: 100%;
+    max-height: 100%;
+    font-weight: bold;
+    padding-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chip .chip__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Position variants */
+.chip .chip__content.chip--top-left {
+    top: 0;
+    left: 0;
+    translate: -50% -50%;
+}
+
+.chip .chip__content.chip--top-right {
+    top: 0;
+    right: 0;
+    translate: 50% -50%;
+}
+
+.chip .chip__content.chip--bottom-right {
+    bottom: 0;
+    right: 0;
+    translate: 50% 50%;
+}
+
+.chip .chip__content.chip--bottom-left {
+    bottom: 0;
+    left: 0;
+    translate: -50% 50%;
+}
+
+/**
+ * Component: Loading
+ */
+.loading .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.loading .loading-pulse {
+    animation: loading-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    background-color: #e5e7eb;
+}
+
+.loading .pulse-effect {
+    animation: loading-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes loading-pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.12);
+        opacity: 0.85;
+    }
+}
