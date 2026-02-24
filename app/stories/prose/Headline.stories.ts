@@ -57,7 +57,7 @@ const meta: Meta<typeof Headline> = {
         docs: {
             description: {
                 component:
-                    'The `<PzHeadline>` component is used to display a headline with a specific format and classification.',
+                    'The `<Headline>` component is used to display a headline with a specific format and classification.',
             },
         },
     },
