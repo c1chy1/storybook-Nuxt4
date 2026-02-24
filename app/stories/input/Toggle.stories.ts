@@ -2,6 +2,7 @@ import type {Meta, StoryFn} from '@storybook/vue3-vite'
 import {fn} from '@storybook/test'
 import {Toggle} from '../../components/input'
 import {EColors} from '../../../types/src'
+import {ref, watch} from 'vue'
 
 const meta: Meta<typeof Toggle> = {
     argTypes: {

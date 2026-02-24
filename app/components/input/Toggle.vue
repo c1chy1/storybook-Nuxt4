@@ -63,8 +63,8 @@
 <script lang="ts" setup>
 import type {IPropsToggle} from '../../../types/src'
 import {EColors} from '../../../types/src'
-/*import { generateId } from '@prezero/web-ui/utils'*/
-import {ref, watch} from 'vue'
+import {generateId} from '../../utils'
+import {computed, ref, watch} from 'vue'
 import {Icon, Label} from '../artifact'
 
 /* Props ----------- */
@@ -82,7 +82,7 @@ const statusType = {
 
 /* Reactives ------- */
 const isToggled = ref(props.modelValue)
-/*const id = computed(() => props.id ?? `id-${generateId()}`)*/
+const id = computed(() => props.id ?? `id-${generateId()}`)
 
 /* Watcher --------- */
 watch(
