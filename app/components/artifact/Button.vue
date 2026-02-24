@@ -34,6 +34,7 @@
       :disabled="disabled"
       :style="customTextStyle"
       class="flex items-center font-normal border-2 hover:shadow-lg focus:outline-none focus-visible:ring disabled:opacity-50 disabled:pointer-events-none p-3 py-2 text-tiny leading-none"
+      v-bind="attrs"
       @click="handleButtonClick"
   >
     <Icon
@@ -56,6 +57,7 @@
       v-if="type === EButtons.GHOST"
       :disabled="disabled"
       class="flex items-center font-normal focus:outline-none focus-visible:ring disabled:opacity-50 disabled:pointer-events-none text-tiny leading-none text-brand-primary"
+      v-bind="attrs"
       @click="handleButtonClick"
   >
     <span
@@ -82,6 +84,7 @@
       v-if="type === EButtons.ACTION"
       :disabled="disabled"
       class="bg-brand-primary-lighter text-brand-primary p-2 py-1 rounded-border-radius-lg active:bg-brand-primary-light focus:outline-none focus-visible:ring disabled:opacity-50 disabled:pointer-events-none"
+      v-bind="attrs"
       @click="handleButtonClick"
   >
     <Icon
@@ -95,7 +98,12 @@
 <script lang="ts" setup>
 import type {IPropsButton} from '../../../types/src'
 import {EButtons, ECorners, EPositions, ESizes} from '../../../types/src'
+import {useAttrs} from 'vue'
 import {Icon} from '../artifact'
+
+defineOptions({inheritAttrs: false})
+
+const attrs = useAttrs()
 
 /* Props ----------- */
 const props = withDefaults(defineProps<IPropsButton>(), {
@@ -105,10 +113,6 @@ const props = withDefaults(defineProps<IPropsButton>(), {
   type: EButtons.PRIMARY,
 })
 
-/* Locals ---------- */
-/* Reactives ------- */
-/* Watcher --------- */
-/* Methods --------- */
 /* Emits ----------- */
 const emits = defineEmits<{
   (e: 'click', event: MouseEvent): void
@@ -121,8 +125,4 @@ function handleButtonClick(event: MouseEvent) {
     props.click()
   else emits('click', event)
 }
-
-/* Lifecycle ------- */
-/* Exposings ------- */
-/* Others ---------- */
 </script>
